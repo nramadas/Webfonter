@@ -1,0 +1,33 @@
+{
+  "name": "webfonter",
+  "version": "0.0.1",
+  "description": "A webfont generator",
+  "main": "index.js",
+  "bin": {
+    "webfonter": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/nramadas/Webfonter.git"
+  },
+  "keywords": [
+    "webfont",
+    "generator"
+  ],
+  "author": "nramadas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nramadas/Webfonter/issues"
+  },
+  "homepage": "https://github.com/nramadas/Webfonter#readme",
+  "dependencies": {
+    "svg2ttf": "^4.0.2",
+    "svgicons2svgfont": "^5.0.0",
+    "ttf2eot": "^2.0.0",
+    "ttf2woff": "^2.0.1",
+    "yargs": "^6.0.0"
+  }
+}
