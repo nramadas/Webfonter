@@ -3,7 +3,6 @@ const fs = require('fs');
 const path = require('path');
 
 const SVG_SHEET_OPTIONS = {
-  fontHeight: 16,
   normalize: true,
 };
 
