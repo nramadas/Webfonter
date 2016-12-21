@@ -1,6 +1,6 @@
 {
   "name": "webfonter",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A webfont generator",
   "main": "./build/index.js",
   "bin": {
