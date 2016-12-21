@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 require('babel-polyfill');
 const yargs = require('yargs');
 const fs = require('fs');
@@ -19,6 +20,8 @@ const options = yargs
   .alias('n', 'name')
     .describe('n', 'name of the font')
     .default('n', 'font')
+  .alias('c', 'cssUrl')
+    .describe('c', 'path to the font files that should be used in the css file')
   .argv;
 
 const zip = (a, b) => a.map((x, i) => [x, b[i]]);
@@ -71,7 +74,7 @@ createSvgSheet(options.files, options.name)
     };
   })
   .then(({ metaData, fileNames }) => {
-    const css = createCSS(options.name, fileNames, options.dest, metaData.glyphToCodepoint);
+    const css = createCSS(options.name, fileNames, options.cssUrl || options.dest, metaData.glyphToCodepoint);
     const html = createHTML(options.name, options.dest, metaData.glyphToCodepoint, css);
     writeFile(css, 'css');
     writeFile(html, 'html');

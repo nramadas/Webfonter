@@ -28,7 +28,7 @@ module.exports = (fileDirectory, fontName) => new Promise(resolve => {
     .on('end', () => resolve({ glyphToCodepoint, svgSheet: fontsSheet.toString() }));
 
   files.forEach((fileName, index) => {
-    const filePath = path.resolve(fileDirectory + '/' + fileName);
+    const filePath = path.resolve(process.cwd(), fileDirectory + '/' + fileName);
     const glyph = fs.createReadStream(filePath);
     const unicode = String.fromCharCode(glyphToCodepoint[fileName.replace('.svg', '')]);
     glyph.metadata = { name: fileName.replace('.svg', ''), unicode: [unicode] };
