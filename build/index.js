@@ -5,8 +5,9 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
 require('babel-polyfill');
 var yargs = require('yargs');
-var fs = require('fs');
+var fs = require('fs-extra');
 var crypto = require('crypto');
+var path = require('path');
 
 var createSvgSheet = require('./generators/svgSheet');
 var createTTF = require('./generators/ttf');
@@ -25,13 +26,13 @@ var zip = function zip(a, b) {
 
 var writeFontFile = function writeFontFile(file, ext, hash) {
   var fileName = options.name + '.' + hash + '.' + ext;
-  fs.writeFileSync(options.dest + '/' + fileName, file);
+  fs.outputFileSync(path.resolve(options.dest + '/' + fileName), file);
   return fileName;
 };
 
 var writeFile = function writeFile(file, ext) {
   var fileName = options.name + '.' + ext;
-  fs.writeFileSync(options.dest + '/' + fileName, file);
+  fs.outputFileSync(path.resolve(options.dest + '/' + fileName), file);
   return fileName;
 };
 

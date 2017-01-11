@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 require('babel-polyfill');
 const yargs = require('yargs');
-const fs = require('fs');
+const fs = require('fs-extra');
 const crypto = require('crypto');
+const path = require('path');
 
 const createSvgSheet = require('./generators/svgSheet');
 const createTTF = require('./generators/ttf');
@@ -28,13 +29,13 @@ const zip = (a, b) => a.map((x, i) => [x, b[i]]);
 
 const writeFontFile = (file, ext, hash) => {
   const fileName = options.name + '.' + hash + '.' + ext;
-  fs.writeFileSync(options.dest + '/' + fileName, file);
+  fs.outputFileSync(path.resolve(options.dest + '/' + fileName), file);
   return fileName;
 };
 
 const writeFile = (file, ext) => {
   const fileName = options.name + '.' + ext;
-  fs.writeFileSync(options.dest + '/' + fileName, file);
+  fs.outputFileSync(path.resolve(options.dest + '/' + fileName), file);
   return fileName;
 };
 
