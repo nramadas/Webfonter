@@ -11,6 +11,8 @@ module.exports = (fontName, fileNames, destination, glyphs) => {
     }
 
     .icon:before {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       font-family: "${fontName}";
     }
     ${Object
