@@ -12,7 +12,7 @@ module.exports = function (fontName, fileNames, destination, glyphs) {
       ttf = _fileNames$map2[2],
       woff = _fileNames$map2[3];
 
-  return ('\n    @font-face {\n      font-family: "' + fontName + '";\n      src: ' + eot + ',\n           ' + woff + ',\n           ' + ttf + ',\n           ' + svg + ';\n    }\n\n    .icon:before {\n      font-family: "' + fontName + '";\n    }\n    ' + Object.keys(glyphs).map(function (k) {
+  return ('\n    @font-face {\n      font-family: "' + fontName + '";\n      src: ' + eot + ',\n           ' + woff + ',\n           ' + ttf + ',\n           ' + svg + ';\n    }\n\n    .icon:before {\n      -webkit-font-smoothing: antialiased;\n      -moz-osx-font-smoothing: grayscale;\n      font-family: "' + fontName + '";\n    }\n    ' + Object.keys(glyphs).map(function (k) {
     return ('\n        .icon-' + k + ':before {\n          content: "\\' + glyphs[k].toString(16) + '"\n        }').replace(new RegExp('        ', 'g'), '');
   }).join('') + '\n  ').split('\n').map(function (line) {
     return line.replace('    ', '');
