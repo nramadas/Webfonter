@@ -27,7 +27,7 @@
     "babel-polyfill": "^6.20.0",
     "fs-extra": "^1.0.0",
     "svg2ttf": "^4.0.2",
-    "svgicons2svgfont": "^5.0.0",
+    "svgicons2svgfont": "^9.0.0",
     "ttf2eot": "^2.0.0",
     "ttf2woff": "^2.0.1",
     "yargs": "^6.0.0"
