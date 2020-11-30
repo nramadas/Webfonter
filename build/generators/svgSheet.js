@@ -22,7 +22,7 @@ module.exports = function (fileDirectory, fontName) {
       return prev;
     }, {});
 
-    var fontsSheet = new Buffer(0);
+    var fontsSheet = Buffer.alloc(0);
     var streamOptions = Object.assign({}, SVG_SHEET_OPTIONS, { fontName: fontName });
 
     var fontStream = new svgToSheet(streamOptions).on('data', function (data) {

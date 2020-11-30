@@ -21,7 +21,7 @@ module.exports = (fileDirectory, fontName) => new Promise(resolve => {
   }, {});
 
 
-  let fontsSheet = new Buffer(0);
+  let fontsSheet = Buffer.alloc(0);
   const streamOptions = Object.assign({}, SVG_SHEET_OPTIONS, { fontName });
 
   const fontStream = (new svgToSheet(streamOptions))
