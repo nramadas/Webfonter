@@ -5,7 +5,8 @@ var fs = require('fs');
 var path = require('path');
 
 var SVG_SHEET_OPTIONS = {
-  normalize: true
+  normalize: true,
+  fontHeight: 1000
 };
 
 var STARTING_CODEPOINT = 0xF101;
@@ -21,10 +22,10 @@ module.exports = function (fileDirectory, fontName) {
       return prev;
     }, {});
 
-    var fontsSheet = new Buffer(0);
+    var fontsSheet = Buffer.alloc(0);
     var streamOptions = Object.assign({}, SVG_SHEET_OPTIONS, { fontName: fontName });
 
-    var fontStream = svgToSheet(streamOptions).on('data', function (data) {
+    var fontStream = new svgToSheet(streamOptions).on('data', function (data) {
       fontsSheet = Buffer.concat([fontsSheet, data]);
     }).on('end', function () {
       return resolve({ glyphToCodepoint: glyphToCodepoint, svgSheet: fontsSheet.toString() });

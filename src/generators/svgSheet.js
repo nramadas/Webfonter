@@ -4,6 +4,7 @@ const path = require('path');
 
 const SVG_SHEET_OPTIONS = {
   normalize: true,
+  fontHeight: 1000,
 };
 
 const STARTING_CODEPOINT = 0xF101;
@@ -20,10 +21,10 @@ module.exports = (fileDirectory, fontName) => new Promise(resolve => {
   }, {});
 
 
-  let fontsSheet = new Buffer(0);
+  let fontsSheet = Buffer.alloc(0);
   const streamOptions = Object.assign({}, SVG_SHEET_OPTIONS, { fontName });
 
-  const fontStream = svgToSheet(streamOptions)
+  const fontStream = (new svgToSheet(streamOptions))
     .on('data', data => { fontsSheet = Buffer.concat([fontsSheet, data]); })
     .on('end', () => resolve({ glyphToCodepoint, svgSheet: fontsSheet.toString() }));
 
